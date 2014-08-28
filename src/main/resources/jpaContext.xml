@@ -40,8 +40,8 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://mydbinstance.cavpckqdd90v.us-east-1.rds.amazonaws.com:3306/studentEnrollment?autoReconnect=true&amp;createDatabaseIfNotExist=true&amp;" />
-		<property name="username" value="awsuser" />
-		<property name="password" value="password" />
+		<property name="url" value="jdbc:mysql://localhost:3306/trafficanalyzer?autoReconnect=true&amp;createDatabaseIfNotExist=true&amp;" />
+		<property name="username" value="oded" />
+		<property name="password" value="72gJMxtb" />
 	</bean>
 </beans>

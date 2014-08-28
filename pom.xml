@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.elizabetht</groupId>
-	<artifactId>StudentEnrollmentWithSpring</artifactId>
+	<artifactId>TrafficAnalyzer</artifactId>
 	<packaging>war</packaging>
 	<version>1.7-SNAPSHOT</version>
-	<name>StudentEnrollmentWithSpring Maven Webapp</name>
+	<name>TrafficAnalyzer</name>
 	<url>http://maven.apache.org</url>
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -76,20 +76,8 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
-	<scm>
-		<connection>scm:git:git@github.com:elizabetht/StudentEnrollmentWithSpring.git</connection>
-		<developerConnection>scm:git:git@github.com:elizabetht/StudentEnrollmentWithSpring.git</developerConnection>
-		<url>git@github.com:elizabetht/StudentEnrollmentWithSpring.git</url>
-	</scm>
-	<developers>
-		<developer>
-			<id>elizabetht</id>
-			<name>Elizabeth Thomas</name>
-			<email>email2eliza@gmail.com</email>
-		</developer>
-	</developers>
 	<build>
-		<finalName>StudentEnrollmentWithSpring</finalName>
+		<finalName>TrafficAnalyzer</finalName>
 		<pluginManagement>
 			<plugins>
 				<plugin>
