@@ -11,8 +11,8 @@
 <p>
 Welcome to the traffic analyzer.<br/>
 <i>${message}</i><br/>
-<a href="/project/create.html">Create a new project</a><br/>
-<a href="/project/list.html">View all projects</a><br/>
+<a href="${pageContext.request.contextPath}/project/create.html">Create a new project</a><br/>
+<a href="${pageContext.request.contextPath}/project/list.html">View all projects</a><br/>
 </p>
 </body>
 </html>
