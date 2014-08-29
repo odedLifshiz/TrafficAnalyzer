@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.elizabetht.model.Project;
+import com.github.elizabetht.service.CaptureService;
 import com.github.elizabetht.service.ProjectService;
 
 @Controller
@@ -30,6 +31,9 @@ public class ProjectController {
 	
 	@Autowired
 	private ProjectService projectService;
+	
+	@Autowired
+	private CaptureService captureService;
 		
 	@RequestMapping(value="/create", method=RequestMethod.GET)
 	public ModelAndView newProjectPage() {
@@ -66,10 +70,8 @@ public class ProjectController {
 	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
 	public ModelAndView viewProjectPage(@PathVariable Integer id) {
 		ModelAndView mav = new ModelAndView("project-view");
-		//mav.addObject("captureList", captureService.findByProjectId(id));
-		//mav.addObject("captureList", captureService.findAll());
-		//mav.addObject("project", projectService.findById(id));
-		//mav.addObject("p", projectService.findByName("testUpload55"));
+		mav.addObject("captureList", null);
+		mav.addObject("p", projectService.findByName("testUpload55"));
 		return mav;
 	}	
 	

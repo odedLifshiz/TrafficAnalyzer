@@ -1,12 +1,14 @@
 package com.github.elizabetht.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 
@@ -18,7 +20,7 @@ public class Project {
 
 	@Id
 	@GeneratedValue
-	private Integer id;
+	private Integer project_id;
 
 	private String name;
 
@@ -26,9 +28,8 @@ public class Project {
 	
 	private Date creationDate;
 	
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="project_id")
-//	private Set<Capture> captures = new HashSet<Capture>();
+	@Transient  
+	private Set<Capture> captures;
 	
 	@PrePersist
     void createdAt() {
@@ -40,7 +41,7 @@ public class Project {
 	}
 
 	public Integer getId() {
-		return id;
+		return project_id;
 	}
 
 
@@ -65,16 +66,16 @@ public class Project {
 	}
 
 	public void setId(Integer id) {
-		this.id=id;		
+		this.project_id=id;		
 	}
 	
 	
-//	public Set<Capture> getCaptures() {
-//		return captures;
-//	}
-//
-//	public void setCaptures(Set<Capture> captures) {
-//		this.captures = captures;
-//	}
+	public Set<Capture> getCaptures() {
+		return captures;
+	}
+
+	public void setCaptures(Set<Capture> captures) {
+		this.captures = captures;
+	}
 
 }
