@@ -21,7 +21,6 @@
 	<tbody>
 		<c:forEach var="project" items="${projectList}">
 			<tr>
-				<td>${project.id}</td>
 				<td>${project.name}</td>
 				<td>${project.creator}</td>
 				<td>${project.creationDate}</td>

@@ -11,5 +11,4 @@ import com.github.elizabetht.model.Capture;
 
 
 public interface CaptureRepository extends JpaRepository<Capture, Integer> {
- 
 }

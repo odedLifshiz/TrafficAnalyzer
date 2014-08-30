@@ -1,14 +1,22 @@
 package com.github.elizabetht.model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.github.elizabetht.service.CaptureService;
 
 
 
@@ -28,8 +36,14 @@ public class Project {
 	
 	private Date creationDate;
 	
-	@Transient  
-	private Set<Capture> captures;
+	@OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "project_capture",
+            joinColumns = @JoinColumn(name = "project_id"),
+            inverseJoinColumns = @JoinColumn(name = "capture_id")
+    )
+	private Set<Capture> captures = new HashSet<Capture>();
+	
 	
 	@PrePersist
     void createdAt() {

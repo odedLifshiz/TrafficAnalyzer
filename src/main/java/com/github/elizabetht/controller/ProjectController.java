@@ -70,8 +70,11 @@ public class ProjectController {
 	@RequestMapping(value="/view/{id}", method=RequestMethod.GET)
 	public ModelAndView viewProjectPage(@PathVariable Integer id) {
 		ModelAndView mav = new ModelAndView("project-view");
-		mav.addObject("captureList", null);
-		mav.addObject("p", projectService.findByName("testUpload55"));
+		Project project = projectService.findById(id);
+		mav.addObject("project", project);
+		mav.addObject("size", project.getCaptures().size());
+		mav.addObject("captureList", project.getCaptures());
+
 		return mav;
 	}	
 	

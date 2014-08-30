@@ -1,6 +1,7 @@
 package com.github.elizabetht.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,16 +17,16 @@ public class Capture {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "capture_id")
 	private Integer id;
 
 	private String name;
 
 	private String path;
 	
-	@ManyToOne
-	@JoinColumn(name="project_id")
-	private Project project;
-	
+	//@ManyToOne
+	//@JoinColumn(name = "project_id")
+		
 	public Integer getId() {
 		return id;
 	}
@@ -50,14 +51,8 @@ public class Capture {
 		this.path = path;
 	}
 	
-	public Project getProject(){
-		return this.project;
-	}
-	
-	public void setProject(Project project){
-		this.project = project;
-	}
 
+	
 	
 	
 }
