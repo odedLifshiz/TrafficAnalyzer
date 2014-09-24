@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.github.elizabetht.model.Capture;
 import com.github.elizabetht.model.Project;
 import com.github.elizabetht.service.CaptureService;
 import com.github.elizabetht.service.ProjectService;
@@ -99,7 +100,7 @@ public class ProjectController {
 		ModelAndView mav = new ModelAndView("redirect:/index.html");
 		String message = "Project was successfully updated.";
 		project.setId(id);
-		projectService.update(project);
+		projectService.updateName(project);
 		
 		redirectAttributes.addFlashAttribute("message", message);	
 		return mav;
@@ -125,8 +126,8 @@ public class ProjectController {
 	public ModelAndView addCaptureToProject(
 				@PathVariable Integer projectid, 
 				@RequestParam("file") MultipartFile captureFile,
-				final RedirectAttributes redirectAttributes
-				//, @ModelAttribute Capture capture
+				final RedirectAttributes redirectAttributes,
+				@ModelAttribute Capture capture
 				)
 	{
 		
@@ -150,14 +151,14 @@ public class ProjectController {
                         new FileOutputStream(capturePathOnServer));
                 stream.write(bytes);
                 stream.close();
-                
                 try{
-//	        		capture.setName(captureFile.getOriginalFilename());
-//	        		capture.setPath(capturePathOnServer.getAbsolutePath());
-//	        		capture.setProject(projectService.findById(projectid));
-//	        		captureService.create(capture);
+	        		capture.setName(captureFile.getOriginalFilename());
+	        		capture.setPath(capturePathOnServer.getAbsolutePath());
+	        		Project project = projectService.findById(projectid);
+	        		project.addCapture(capture);
+	        		captureService.create(capture);
                 }catch(Exception e){
-                	message = "Could not create capture. Exception was: " + e.getStackTrace();
+                	message = capture.getId()  + "Could not create capture. Exception was: " + e.getStackTrace().toString();
                 }
         		
         		

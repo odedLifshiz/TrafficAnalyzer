@@ -11,7 +11,7 @@ public interface ProjectService {
 	public Project create(Project project);
 	public void delete(int id);
 	public List<Project> findAll();
-	public Project update(Project project);
+	public Project updateName(Project project);
 	public Project findById(int id);
 	public Project findByName(String name);
 }

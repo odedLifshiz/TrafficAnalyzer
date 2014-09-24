@@ -91,5 +91,9 @@ public class Project {
 	public void setCaptures(Set<Capture> captures) {
 		this.captures = captures;
 	}
+	
+	public void addCapture(Capture capture){
+		captures.add(capture);
+	}
 
 }

@@ -17,8 +17,8 @@ public class Capture {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "capture_id")
-	private Integer id;
+	//@Column(name = "capture_id")
+	private Integer capture_id;
 
 	private String name;
 
@@ -28,11 +28,11 @@ public class Capture {
 	//@JoinColumn(name = "project_id")
 		
 	public Integer getId() {
-		return id;
+		return capture_id;
 	}
 
 	public void setId(Integer id) {
-		this.id = id;
+		this.capture_id = id;
 	}
 
 	public String getName() {
