@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.github.elizabetht.model.Capture;
 import com.github.elizabetht.model.Project;
+import com.github.elizabetht.repository.ProjectRepository;
 import com.github.elizabetht.service.CaptureService;
 import com.github.elizabetht.service.ProjectService;
 
@@ -53,8 +54,9 @@ public class ProjectController {
 		ModelAndView mav = new ModelAndView();
 		String message = "New project " + project.getName() + " was successfully created.";
 		
+		
 		projectService.create(project);
-		mav.setViewName("redirect:/index.html");
+		mav.setViewName("redirect:/project/list.html");
 		
 		redirectAttributes.addFlashAttribute("message", message);	
 		return mav;		
@@ -75,7 +77,6 @@ public class ProjectController {
 		mav.addObject("project", project);
 		mav.addObject("size", project.getCaptures().size());
 		mav.addObject("captureList", project.getCaptures());
-
 		return mav;
 	}	
 	
@@ -97,10 +98,16 @@ public class ProjectController {
 			return new ModelAndView("project-edit");
 		}
 		
-		ModelAndView mav = new ModelAndView("redirect:/index.html");
+		ModelAndView mav = new ModelAndView("redirect:/project/list.html");
 		String message = "Project was successfully updated.";
-		project.setId(id);
-		projectService.updateName(project);
+		try {
+			Project projectToEdit = projectService.findById(id);
+			projectToEdit.setName(project.getName());
+			projectService.updateProject(projectToEdit);
+		}
+		catch(Exception e){
+			 message = "Could not update project: " + project.getName() + ". Error was: " + e.getStackTrace();
+		}
 		
 		redirectAttributes.addFlashAttribute("message", message);	
 		return mav;
@@ -109,13 +116,17 @@ public class ProjectController {
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	public ModelAndView deleteProject(@PathVariable Integer id,
 			final RedirectAttributes redirectAttributes)  {
-		
-		ModelAndView mav = new ModelAndView("redirect:/index.html");		
-		
-		Project project = projectService.findById(id);
-		projectService.delete(id);
-				
-		String message = "The project " + project.getName() + " was successfully deleted.";
+		ModelAndView mav = new ModelAndView("redirect:/project/list.html");
+		String message = null;
+		Project project =null;
+		try {
+			project = projectService.findById(id);
+			projectService.delete(id);
+			message = "Project: " + project.getName() + " was successfully deleted.";
+		}
+		catch (Exception e){
+			message = "could not delete project. error was: " + e.getStackTrace();
+		}
 		
 		redirectAttributes.addFlashAttribute("message", message);
 		return mav;
@@ -126,8 +137,7 @@ public class ProjectController {
 	public ModelAndView addCaptureToProject(
 				@PathVariable Integer projectid, 
 				@RequestParam("file") MultipartFile captureFile,
-				final RedirectAttributes redirectAttributes,
-				@ModelAttribute Capture capture
+				final RedirectAttributes redirectAttributes
 				)
 	{
 		
@@ -151,14 +161,17 @@ public class ProjectController {
                         new FileOutputStream(capturePathOnServer));
                 stream.write(bytes);
                 stream.close();
+                Capture capture = null;
                 try{
+                	capture = new Capture();
 	        		capture.setName(captureFile.getOriginalFilename());
 	        		capture.setPath(capturePathOnServer.getAbsolutePath());
 	        		Project project = projectService.findById(projectid);
-	        		project.addCapture(capture);
 	        		captureService.create(capture);
+	        		project.addCapture(capture);
+	        		projectService.updateProject(project);
                 }catch(Exception e){
-                	message = capture.getId()  + "Could not create capture. Exception was: " + e.getStackTrace().toString();
+                	message = capture.toString() + ". Could not create capture. Exception was: " + e.getStackTrace().toString();
                 }
         		
         		

@@ -18,13 +18,13 @@
 			<th width="50px">creationDate</th>
 		</tr>
 	</thead>
+	<h1><i>${message}</i><br></h1>
 	<tbody>
 		<c:forEach var="project" items="${projectList}">
 			<tr>
 				<td>${project.name}</td>
 				<td>${project.creator}</td>
 				<td>${project.creationDate}</td>
-
 				<td>
 					<a href="${pageContext.request.contextPath}/project/view/${project.id}.html">View</a><br/>
 					<a href="${pageContext.request.contextPath}/project/edit/${project.id}.html">Edit</a><br/>

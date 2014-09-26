@@ -32,14 +32,8 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Transactional
-	public Project updateName(Project project)  {
-		Project updatedProject = projectRepository.findOne(project.getId());
-		
-		if (updatedProject == null) {
-			return null;
-		}
-		updatedProject.setName(project.getName());
-		return updatedProject;
+	public void updateProject(Project project)  {
+		projectRepository.save(project);
 	}
 	
 	@Transactional

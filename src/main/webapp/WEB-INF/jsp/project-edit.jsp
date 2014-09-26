@@ -18,13 +18,15 @@
 	<td><form:errors path="name" cssStyle="color: red;"/></td>
 </tr>
 <tr>
-<td><input type="submit" value="Create" /></td>
+<td><input type="submit" value="Change" /></td>
 <td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 </form:form>
+<a href="${pageContext.request.contextPath}/project/list.html">Project list</a>
+<br></br>
 <a href="${pageContext.request.contextPath}/">Home page</a>
 </body>
 </html>

@@ -30,6 +30,7 @@
 	</tbody>
 </table>
 </form:form>
-<a href="${pageContext.request.contextPath}/">Home page</a>
-</body>
+<a href="${pageContext.request.contextPath}/project/list.html">Project list</a>
+<br></br>
+<a href="${pageContext.request.contextPath}/">Home page</a></body>
 </html>

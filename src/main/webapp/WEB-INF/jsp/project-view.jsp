@@ -31,7 +31,8 @@
 		Capture to upload: <input type="file" name="file"><br /> 
 		<input type="submit" value="Upload"> Upload capture
 	</form>
-
+<a href="${pageContext.request.contextPath}/project/list.html">Project list</a>
+<br></br>
 <a href="${pageContext.request.contextPath}/">Home page</a>
 </body>
 </html>
