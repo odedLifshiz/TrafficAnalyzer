@@ -1,0 +1,75 @@
+package analysis;
+
+import java.net.InetAddress;
+import java.util.LinkedList;
+
+public interface Packet {
+	public boolean getIsIpv4();
+	public boolean getIsCooked();
+	public InetAddress getSrcAddress();
+	public int getSrcPort();
+	public InetAddress getDstAddress();
+	public int getDstPort();
+	public int getFrameNumber();
+	public float getTimeRelative();
+	public int getSllPktType();
+	public long getTcpSequenceNumber();
+	public long getTcpAck();
+	public int getTcpLen();
+	public int getTcpWindowSize();
+	public boolean getIsTcpFlagsSyn();
+	public boolean getIsTcpFlagsAck();
+	public boolean getIsTcpFlagsFin();
+	public boolean getIsTcpFlagsReset();
+	public int getTtl();
+	public int getIpId();
+	public int getTcpOptionsWscaleMultiplier();
+	public boolean getIsRetransmission();
+	public boolean getIsFastRetransmission();
+	public float getRtt();
+	public int getHttpResponseCode();
+	public int getHttpContentLength();
+	public HttpMethod getHttpMethod();
+	public InetAddress getHttpHost();
+	public String getHttpRequestUri();
+	public String getHttpConnection();
+	public String getHttpReferer();
+	public int getMss();
+	public int getWscale();
+	public LinkedList<SackRange> getSackRanges();
+	
+	public void setIsIpv4(boolean isIpv4);
+	public void setIsCooked(boolean isCooked);
+	public void setSrcAddress(InetAddress srcAddress);
+	public void setSrcPort(int srcPort);
+	public void setDstAddress(InetAddress dstAddress);
+	public void setDstPort(int dstPort);
+	public void setFrameNumber(int frameNumber);
+	public void setTimeRelative(float timeRelative);
+	public void setSllPktType(int sllPktType);
+	public void setTcpSequenceNumber(long sequenceNumber);
+	public void setTcpAck(long tcpAckNumber);
+	public void setTcpLen(int tcpLen);
+	public void setTcpWindowSize(int windowSize);
+	public void setIsTcpFlagsSyn(boolean isTcpFlagsSyn);
+	public void setIsTcpFlagsAck(boolean isTcpFlagsAck);
+	public void setIsTcpFlagsFin(boolean isTcpFlagsFin);
+	public void setIsTcpFlagsReset(boolean isTcpFlagsReset);
+	public void setTtl(int ttl);
+	public void setIpId(int ipId);
+	public void setTcpOptionsWscaleMultiplier(int tcpOptionsWscaleMultiplier);
+	public void setIsRetransmission(boolean isRetransmission);
+	public void setIsFastRetransmission(boolean isFastRetransmission);
+	public void setRtt(float rtt);
+	public void setHttpResponseCode(int httpResponseCode);
+	public void setHttpContentLength(int httpContentLength);
+	public void setHttpMethod(HttpMethod httpMethod);
+	public void setHttpHost(String httpHost);
+	public void setHttpRequestUri(String httpRequestUri);
+	public void setHttpConnection(String httpConnection);
+	public void setHttpReferer(String httpReferrer);
+	public void setMss(int mss);
+	public void setWscake(int wscale);
+	public void setSackRanges(LinkedList<SackRange> sackRanges);
+	
+}
