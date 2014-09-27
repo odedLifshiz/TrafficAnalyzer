@@ -1,14 +1,15 @@
-package com.github.elizabetht.service;
+package service;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import model.Capture;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.elizabetht.model.Capture;
-import com.github.elizabetht.repository.CaptureRepository;
+import repository.CaptureRepository;
 
 
 

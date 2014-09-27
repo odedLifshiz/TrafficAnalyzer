@@ -1,4 +1,4 @@
-package com.github.elizabetht.model;
+package model;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-import com.github.elizabetht.service.CaptureService;
+import service.CaptureService;
 
 
 

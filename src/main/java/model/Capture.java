@@ -1,4 +1,4 @@
-package com.github.elizabetht.model;
+package model;
 
 
 import javax.persistence.Entity;

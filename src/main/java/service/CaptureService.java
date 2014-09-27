@@ -1,8 +1,8 @@
-package com.github.elizabetht.service;
+package service;
 
 import java.util.List;
 
-import com.github.elizabetht.model.Capture;
+import model.Capture;
 
 
 public interface CaptureService {

@@ -1,4 +1,4 @@
-package com.github.elizabetht.controller;
+package controller;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -6,6 +6,9 @@ import java.io.FileOutputStream;
 import java.util.List;
 
 import javax.validation.Valid;
+
+import model.Capture;
+import model.Project;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,11 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.github.elizabetht.model.Capture;
-import com.github.elizabetht.model.Project;
-import com.github.elizabetht.repository.ProjectRepository;
-import com.github.elizabetht.service.CaptureService;
-import com.github.elizabetht.service.ProjectService;
+import repository.ProjectRepository;
+import service.CaptureService;
+import service.ProjectService;
 
 @Controller
 @RequestMapping(value="/project")
